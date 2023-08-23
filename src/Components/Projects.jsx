@@ -9,14 +9,14 @@ const Projects = () => {
             <Navbar />
           </div>
     </header>
-    <div className='container px-5 py-8 lg:w-4/6 mx-auto bg-white'>
-    <div className="w-full  mx-auto max-w-full px-4">
+    <div className='container mt-4 px-5 py-4 lg:w-4/6 mx-auto card'>
+    <div className="w-full mx-auto max-w-full px-4">
     <div className=" rounded-lg pb-6 border-gray-200">
         <div className="flex items-center border-b border-gray-200 justify-between px-6 py-3">
             <p className="text-sm lg:text-xl font-semibold leading-tight text-gray-800">Projects</p>
-            <div className="flex cursor-pointer items-center justify-center px-3 py-2.5 border rounded border-gray-100">
-                <a href="https://github.com/enjae" className="text-xs md:text-sm leading-none text-gray-600">
-                GitHub</a>
+            <div className="flex cursor-pointer items-center justify-center px-3 py-2.5 border rounded bg-black border-gray-100">
+                <a href="https://github.com/enjae" className="text-xs md:text-sm leading-none text-white">
+                Open GitHub</a>
             </div>
         </div>
         <div className="px-6 pt-6 overflow-x-auto">

@@ -78,7 +78,7 @@ export default function Navbar() {
                 </svg>
               </li>
               <li className="text-gray-700 text-sm hover:text-gray-300">
-                <Link to="/Resume" href="#">
+                <Link to="/NandiniJaryal-Resume" href="#">
                   Resume
                 </Link>
               </li>
@@ -103,7 +103,7 @@ export default function Navbar() {
                 </svg>
               </li>
               <li className="text-gray-700 text-sm hover:text-gray-300">
-                <Link to="/Projects">Projects</Link>
+                <Link to="/NandiniJaryal-Projects">Projects</Link>
               </li>
             </ul>
           </div>

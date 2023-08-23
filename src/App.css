@@ -6,9 +6,20 @@
   font-family: Inconsolata;
 }
 body{
-  background-image: url("https://looneypatterns.com/images/pattern-preview/02.png");
+  background-image: url("https://i.ebayimg.com/images/g/CoUAAOSwi8xZ8a5P/s-l1200.webp");
   /* background: radial-gradient(circle, #4f46e4 10%, transparent 11%);
   background-size: 3em 3em;
   background-color: #ffffff;
   opacity: 1 */
+}
+.card{
+  background: rgba( 255, 255, 255, 0.2 );
+  box-shadow: 0 8px 10px 0 rgba(77, 80, 131, 0.37);
+  backdrop-filter: blur( 13px );
+  -webkit-backdrop-filter: blur( 53px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.bg-offwhite{
+  background-color: #fafbf8;
 }

@@ -11,7 +11,7 @@ const Home = () => {
           <Navbar />
         </div>
       </header>
-      <section className="text-gray-600 body-font">
+      <section className="text-gray-600 body-font align-">
         <div className="container px-5 -py-2 flex flex-col">
           <div className="lg:w-4/6 mx-auto">
             {/* <div className="rounded-lg h-64 overflow-hidden">
@@ -21,7 +21,7 @@ const Home = () => {
             src="https://dummyimage.com/1200x500"
           />
   </div>*/}
-            <div className="flex flex-col sm:flex-row border rounded-xl my-4 px-8 bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+            <div className="flex flex-col sm:flex-row border rounded-xl my-4 px-8 bg-white card">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-4">
                 <div className="w-25 h-25 mt-4 rounded-full inline-flex items-center justify-center text-gray-400">
                   <img
@@ -72,23 +72,20 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                <p className="leading-relaxed text-lg mb-4">
-                  I'm Nandini, a web developer and software engineer with a
-                  strong foundation in computer science principles. At the
-                  moment, I'm fully committed to a year-long project. However,
-                  I'm open to the idea of taking on smaller consulting
-                  assignments during this period. This includes the possibility
-                  of offering my services for free to assist charitable
-                  organizations or to mentor aspiring engineers, which
-                  brings me great satisfaction. <br />
+              <div className="sm:w-2/3  sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                <p className="leading-relaxed md:align-middle text-lg mb-4">
+                I'm Nandini, a web developer and software engineer with a solid 
+                computer science background (no,i cannot fix your printer). Currently immersed in a year-long project, 
+                I'm also available for shorter consulting tasks. This involves potentially 
+                aiding charities or mentoring aspiring engineers, something that brings me 
+                immense joy. <br />
                 </p>
                 <div className="col-span-4 sm:col-span-2 md:col-span-2 lg:col-span-1 xl:col-span-1">
                   <div className="mb-2 text-left font-medium text-gray-800 dark:text-gray-400">
-                    Please feel free to get in touch if you'd like to discuss
-                    how I can assist you.
+                  Feel free to reach out if you'd like to talk about how I can help you.
                   </div>
-                  <ul className="mb-4 -ml-2 flex md:order-1 md:mb-0">
+                  <div className="">
+                  <ul className="flex md:order-1 mb-4 -ml-2  md:mb-0 ">
                     <li>
                       <a
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
@@ -161,7 +158,7 @@ const Home = () => {
                       <a
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
                         aria-label="Dribble"
-                        href="https://github.com/onwidget/tailnext"
+                        href="https://dribbble.com/enjae"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -175,6 +172,10 @@ const Home = () => {
                       </a>
                     </li>
                   </ul>
+                  </div>
+                  <div className="mb-2 text-left font-medium text-pink-300">
+                  Fun Fact : I love the color pink 🌸
+                  </div>
                 </div>
               </div>
             </div>

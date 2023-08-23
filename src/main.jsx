@@ -17,11 +17,11 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/Resume",
+    path: "/NandiniJaryal-Resume",
     element: <Resume />,
   },
   {
-    path: "/Projects",
+    path: "/NandiniJaryal-Projects",
     element: <Projects />,
   },
 ]);
