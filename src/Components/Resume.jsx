@@ -81,7 +81,7 @@ const Resume = () => {
             </div>
             <div className="mx-4 hidden md:block">
               <Link
-                to="/components/projects"
+                to="/NandiniJaryal-Projects"
                 className="inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-blue active:bg-gray-700 transition duration-150 ease-in-out w-full py-2 text-white rounded text-sm"
               >
                 View Projects
