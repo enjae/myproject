@@ -15,7 +15,7 @@ const Projects = () => {
         <div className="flex items-center border-b border-gray-200 justify-between px-6 py-3">
             <p className="text-sm lg:text-xl font-semibold leading-tight text-gray-800">Projects</p>
             <div className="flex cursor-pointer items-center justify-center px-3 py-2.5 border rounded bg-black border-gray-100">
-                <a href="https://github.com/enjae" className="text-xs md:text-sm leading-none text-white">
+                <a href="https://github.com/enjae" target="_blank" className="text-xs md:text-sm leading-none text-white">
                 Open GitHub</a>
             </div>
         </div>
@@ -60,7 +60,7 @@ const Projects = () => {
                             <div>
                                 <p className="text-sm font-semibold leading-none text-right text-gray-800"></p>
                                 <div className="flex items-center justify-center px-2 py-1 mt-2 bg-black rounded-full">
-                                    <a href='https://skinsforskin.netlify.app/' className="text-xs leading-3 text-white">View Here</a>
+                                    <a href='https://skinsforskin.netlify.app/' target="_blank" className="text-xs leading-3 text-white">View Here</a>
                                 </div>
                             </div>
                         </td>
@@ -95,7 +95,7 @@ const Projects = () => {
                             <div>
                                 <p className="text-sm font-semibold leading-none text-right text-gray-800"></p>
                                 <div className="flex items-center justify-center px-2 py-1 mt-2 bg-black rounded-full">
-                                    <a href='https://sustainweb.netlify.app/' className="text-xs leading-3 text-white">View Here</a>
+                                    <a href='https://sustainweb.netlify.app/' target="_blank" className="text-xs leading-3 text-white">View Here</a>
                                 </div>
                             </div>
                         </td>
@@ -129,7 +129,7 @@ const Projects = () => {
                             <div>
                                 <p className="text-sm font-semibold leading-none text-right text-gray-800"></p>
                                 <div className="flex items-center justify-center px-2 py-1 mt-2 bg-black rounded-full">
-                                    <a href='https://conferenceroom1.pythonanywhere.com/' className="text-xs leading-3 text-white">View Here</a>
+                                    <a href='https://conferenceroom1.pythonanywhere.com/' target="_blank" className="text-xs leading-3 text-white">View Here</a>
                                 </div>
                             </div>
                         </td>
@@ -155,7 +155,7 @@ const Projects = () => {
                             <div>
                                 <p className="text-sm font-semibold leading-none text-right text-gray-800"></p>
                                 <div className="flex items-center justify-center px-2 py-1 mt-2 bg-black rounded-full">
-                                    <a href='https://v1.nitj.ac.in/hacknitj/' className="text-xs leading-3 text-white">View here</a>
+                                    <a href='https://v1.nitj.ac.in/hacknitj/' target="_blank" className="text-xs leading-3 text-white">View here</a>
                                 </div>
                             </div>
                         </td>
@@ -182,7 +182,7 @@ const Projects = () => {
                             <div>
                                 <p className="text-sm font-semibold leading-none text-right text-gray-800"></p>
                                 <div className="flex items-center justify-center px-2 py-1 mt-2 bg-black rounded-full">
-                                    <a href='https://enjae.github.io/ethe_scan/' className="text-xs leading-3 text-white">View here</a>
+                                    <a href='https://enjae.github.io/ethe_scan/' target="_blank" className="text-xs leading-3 text-white">View here</a>
                                 </div>
                             </div>
                         </td>

@@ -90,7 +90,8 @@ const Home = () => {
                       <a
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
                         aria-label="LinkedIn"
-                        href="#"
+                        href="https://www.linkedin.com/in/nandinijaryal/"
+                        target="_blank"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +108,8 @@ const Home = () => {
                       <a
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
                         aria-label="Instagram"
-                        href="#"
+                        href="https://instagram.com/enjae_?igshid=MzRlODBiNWFlZA=="
+                        target="_blank"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -124,24 +126,20 @@ const Home = () => {
                       <a
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
                         aria-label="Twitter"
-                        href="#"
+                        href="https://twitter.com/Enjaeee?t=z4W6--Xi5k5e2dB9VTX2OA&s=09"
+                        target="_blank"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-7 w-7"
-                          fill="currentColor"
-                          style={{ color: "#1da1f2" }}
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                        </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
+                      <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+                    </svg>
                       </a>
                     </li>
                     <li>
                       <a
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
                         aria-label="GitHub"
-                        href="#"
+                        href="https://github.com/enjae"
+                        target="_blank"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -159,6 +157,7 @@ const Home = () => {
                         className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none  dark:text-gray-400  "
                         aria-label="Dribble"
                         href="https://dribbble.com/enjae"
+                        target="_blank"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
