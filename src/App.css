@@ -28,6 +28,6 @@ body{
 @media screen and (max-width: 600px){
   .mainscreen{
     position:relative;
-   top: 10vh;
+   top: 12vh;
    }
 }

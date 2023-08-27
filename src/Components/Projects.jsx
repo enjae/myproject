@@ -48,9 +48,9 @@ const Projects = () => {
         </div>
       </header>
       
-      <div className="container px-5 py-2 flex-col lg:w-4/6 mx-auto h-screen flex items-center justify-center align-middle">
+      <div className="container px-5 py-2 flex-col lg:w-4/6 mx-auto">
       <div className="card">
-      <div className="flex mx-4 flex-row items-center text-center pt-2 pb-4 justify-between border-b">
+      <div className="flex mx-4 flex-row items-center text-center pt-4 pb-4 justify-between border-b">
                   <h1 className="font-bold text-gray-900 text-xl">
                     Projects
                   </h1>
