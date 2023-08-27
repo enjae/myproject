@@ -5,14 +5,14 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div className="md:container md:mx-auto">
+    <div>
       <header className="sticky top-0 z-50 sm:px-16 px-6 flex justify-center items-center">
         <div className="xl:max-w-[1280px] w-full">
           <Navbar />
         </div>
       </header>
-      <section className="text-gray-600 body-font align-">
-        <div className="container px-5 -py-2 flex flex-col">
+      <div className="h-screen flex items-center justify-center align-middle text-gray-600 body-font align-">
+        <div className="container px-5 flex-col">
           <div className="lg:w-4/6 mx-auto">
             <div className="flex flex-col sm:flex-row border rounded-xl my-4 px-8 bg-white card">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-4">
@@ -66,7 +66,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="sm:w-2/3  sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                <p className="leading-relaxed md:align-middle text-lg mb-4">
+                <p className="leading-relaxed md:align-middle text-lg mb-4  flex items-center justify-center align-middle">
                 I'm Nandini, a web developer and software engineer with a solid 
                 computer science background (no,i cannot fix your printer). Currently immersed in a year-long project, 
                 I'm also available for shorter consulting tasks. This involves potentially 
@@ -173,7 +173,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };

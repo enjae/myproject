@@ -23,3 +23,11 @@ body{
 .bg-offwhite{
   background-color: #fafbf8;
 }
+
+
+@media screen and (max-width: 600px){
+  .container{
+    position:relative;
+   top: 10vh;
+   }
+}
