@@ -48,9 +48,10 @@ const Projects = () => {
         </div>
       </header>
       
-      <div className="card container px-5 py-2 my-4 flex flex-col lg:w-4/6 mx-auto ">
-      <div className="flex flex-row items-center text-center mt-4 pb-4 justify-between border-b">
-                  <h1 className=" font-bold text-gray-900 text-xl">
+      <div className="container px-5 py-2 my-4 flex flex-col lg:w-4/6 mx-auto ">
+      <div className="card">
+      <div className="flex mx-4 flex-row items-center text-center mt-4 pb-4 justify-between border-b">
+                  <h1 className="font-bold text-gray-900 text-xl">
                     Projects
                   </h1>
                   <a href="https://github.com/enjae" target="blank" className="bg-black rounded-md px-4 py-1 text-white">
@@ -86,6 +87,7 @@ const Projects = () => {
         ))
         }
       </ul>
+      </div>
     </div>
     </div>
 

@@ -12,7 +12,7 @@ const Home = () => {
         </div>
       </header>
       <div className="h-screen flex items-center justify-center align-middle text-gray-600 body-font align-">
-        <div className="container px-5 flex-col">
+        <div className="container mainscreen px-5 flex-col">
           <div className="lg:w-4/6 mx-auto">
             <div className="flex flex-col sm:flex-row border rounded-xl my-4 px-8 bg-white card">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-4">
