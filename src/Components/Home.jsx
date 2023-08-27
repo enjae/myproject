@@ -14,13 +14,6 @@ const Home = () => {
       <section className="text-gray-600 body-font align-">
         <div className="container px-5 -py-2 flex flex-col">
           <div className="lg:w-4/6 mx-auto">
-            {/* <div className="rounded-lg h-64 overflow-hidden">
-          <img
-            alt="content"
-            className="object-cover object-center h-full w-full"
-            src="https://dummyimage.com/1200x500"
-          />
-  </div>*/}
             <div className="flex flex-col sm:flex-row border rounded-xl my-4 px-8 bg-white card">
               <div className="sm:w-1/3 text-center sm:pr-8 sm:py-4">
                 <div className="w-25 h-25 mt-4 rounded-full inline-flex items-center justify-center text-gray-400">
