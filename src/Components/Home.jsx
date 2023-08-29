@@ -45,10 +45,13 @@ const Home = () => {
           </div>
 
           {/* DOWNLOAD CV CARD */}
-          <Link
-            to="/NandiniJaryal-Resume"
-            target="_blank"
-            className="text-decoration transition duration-500 ease-in-out scale text-white rounded-3xl flex flex-col col-span-1 relative overflow-hidden aspect-square shadow-sm bg-cv p-4 justify-center items-center"
+          <dive to="/NandiniJaryal-Resume"
+            className="text-decoration transition 
+            duration-500 ease-in-out scale 
+            text-white rounded-3xl flex flex-col 
+            col-span-1 relative overflow-hidden 
+            aspect-square shadow-sm bg-cv p-4 
+            justify-center items-center"
           >
             <svg
               stroke="currentColor"
@@ -65,12 +68,12 @@ const Home = () => {
             </svg>
             <div className="">
               <div className="flex justify-center items-center flex-col">
-                <p className="text-xs md:text-xl uppercase font-semibold text-center">
+                <Link to="/NandiniJaryal-Resume" className="text-xs md:text-xl uppercase font-semibold text-center">
                   Resume📄
-                </p>
+                </Link>
               </div>
             </div>
-          </Link>
+          </dive>
 
           {/* EMAIL BUTTON */}
           <a
@@ -328,9 +331,8 @@ const Home = () => {
           </a>
 
           {/* MY PROYECTS CARD */}
-          <Link
+          <Link to="/NandiniJaryal-Projects" href="#"
             className="relative rounded-3xl col-span-2 md:aspect-auto overflow-hidden scale transition duration-500 ease-in-out"
-            to="/NandiniJaryal-Projects"
             target="_blank"
           >
             <svg
