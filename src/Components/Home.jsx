@@ -331,7 +331,7 @@ const Home = () => {
           </a>
 
           {/* MY PROYECTS CARD */}
-          <Link to="/NandiniJaryal-Projects" href="#"
+          <div href="#"
             className="relative rounded-3xl col-span-2 md:aspect-auto overflow-hidden scale transition duration-500 ease-in-out"
             target="_blank"
           >
@@ -349,16 +349,16 @@ const Home = () => {
               <path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
             </svg>
 
-            <div className="w-full h-full absolute top-0 left-0 text-white p-4 md:p-8 z-10 pointer-events-none flex flex-col justify-start">
+            <Link to="/NandiniJaryal-Projects" className="w-full h-full absolute top-0 left-0 text-white p-4 md:p-8 z-10 pointer-events-none flex flex-col justify-start">
               <h2 className="font-bold text-md md:text-xl lg:text-4xl">
                 Projects
               </h2>
               <p className="font-base text-xs md:text-2xl lg:text-2xl md:w-4/5 lg:w-5/6 lg:mt-4">
                 Some of the projects I have worked upon
               </p>
-            </div>
+            </Link>
             <div className="w-full h-full bg-project absolute"></div>
-          </Link>
+          </div>
 
           <div className="grid grid-cols-4 place-content-center place-items-center gap-3 md:gap-8 p-4 md:p-8 rounded-3xl relative overflow-hidden col-span-1 aspect-square shadow-sm text-lg md:text-xl lg:text-5xl text-center text-[#ffffffde]">
             <img
