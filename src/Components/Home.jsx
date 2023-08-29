@@ -45,7 +45,7 @@ const Home = () => {
           </div>
 
           {/* DOWNLOAD CV CARD */}
-          <dive to="/NandiniJaryal-Resume"
+          <div 
             className="text-decoration transition 
             duration-500 ease-in-out scale 
             text-white rounded-3xl flex flex-col 
@@ -68,12 +68,12 @@ const Home = () => {
             </svg>
             <div className="">
               <div className="flex justify-center items-center flex-col">
-                <Link to="/NandiniJaryal-Resume" className="text-xs md:text-xl uppercase font-semibold text-center">
+                <Link to="/NandiniJaryal-Resume" target="_blank" className="text-xs md:text-xl uppercase font-semibold text-center">
                   Resume📄
                 </Link>
               </div>
             </div>
-          </dive>
+          </div>
 
           {/* EMAIL BUTTON */}
           <a
@@ -330,17 +330,17 @@ const Home = () => {
             </svg>
           </a>
 
-          {/* MY PROYECTS CARD */}
-          <div href="#"
-            className="relative rounded-3xl col-span-2 md:aspect-auto overflow-hidden scale transition duration-500 ease-in-out"
-            target="_blank"
+          {/* MY PROJECTS CARD */}
+          
+          <div
+            className="flex flex-col row-span-2 justify-center items-center bg-project rounded-3xl relative overflow-hidden col-span-2 shadow-sm  scale transition duration-300 ease-in-out"
           >
             <svg
               stroke="currentColor"
               fill="currentColor"
               strokeWidth={0}
               viewBox="0 0 24 24"
-              className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white z-10"
+              className="absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white"
               height="1em"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
@@ -348,16 +348,15 @@ const Home = () => {
               <path fill="none" d="M0 0h24v24H0z" />
               <path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
             </svg>
-
-            <Link to="/NandiniJaryal-Projects" className="w-full h-full absolute top-0 left-0 text-white p-4 md:p-8 z-10 pointer-events-none flex flex-col justify-start">
-              <h2 className="font-bold text-md md:text-xl lg:text-4xl">
-                Projects
-              </h2>
-              <p className="font-base text-xs md:text-2xl lg:text-2xl md:w-4/5 lg:w-5/6 lg:mt-4">
-                Some of the projects I have worked upon
-              </p>
-            </Link>
-            <div className="w-full h-full bg-project absolute"></div>
+            <div className="flex flex-col">
+                  <Link target="_blank" to="/NandiniJaryal-Projects" className="text-white text-sm md:text-xl lg:text-3xl font-bold">
+                    Projects
+                  </Link>
+                  <Link to="/NandiniJaryal-Projects" target="_blank"  className="text-white text-sm md:text-md lg:text-2xl">
+                    Here you find thing I usually practice.
+                  </Link>
+                </div>
+            
           </div>
 
           <div className="grid grid-cols-4 place-content-center place-items-center gap-3 md:gap-8 p-4 md:p-8 rounded-3xl relative overflow-hidden col-span-1 aspect-square shadow-sm text-lg md:text-xl lg:text-5xl text-center text-[#ffffffde]">
