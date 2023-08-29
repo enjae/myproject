@@ -353,7 +353,7 @@ const Home = () => {
                     Projects
                   </Link>
                   <Link to="/NandiniJaryal-Projects"  className="text-white text-sm md:text-md lg:text-2xl">
-                    Here you find thing I usually practice.
+                    Here are some of the projects I have worked upon.
                   </Link>
                 </div>
             
