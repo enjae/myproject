@@ -330,7 +330,7 @@ const Home = () => {
           {/* MY PROYECTS CARD */}
           <Link
             className="relative rounded-3xl col-span-2 md:aspect-auto overflow-hidden scale transition duration-500 ease-in-out"
-            href="/NandiniJaryal-Projects"
+            to="/NandiniJaryal-Projects"
             target="_blank"
           >
             <svg
