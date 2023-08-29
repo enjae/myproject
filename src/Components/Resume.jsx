@@ -15,13 +15,13 @@ const Resume = () => {
       {/*<Link to="/Components/Home" className='fixed px-5 py-4 '>
     <svg className="h-8 w-4 text-gray-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />  <polyline points="9 22 9 12 15 12 15 22" /></svg>
   </Link>*/}
-      <div className="mt-6 max-w-screen-lg md:flex mx-auto bg-offwhite">
+      <div className="body mt-6 max-w-screen-lg md:flex mx-auto">
         <div className="md:w-1/3 p-2">
           <div className=" md:fixed">
             <div className="md:block ">
               <img className="h-20 w-20 mx-auto rounded-lg " src={Nandini} />
-              <div className="mb-12 text-center mt-4 justify-center items-left mx-4">
-                <h1 className="text-xl text-gray-700 font-bold">
+              <div className="mb-12 text-center mt-4 justify-center items-left mx-4 text-Inconsolata">
+                <h1 className="text-xl text-gray-700 font-bold text-Inconsolata">
                   Nandini Jaryal
                 </h1>
                 <div className="md:text-sm text-gray-600">

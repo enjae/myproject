@@ -10,6 +10,8 @@ export default {
         Inconsolata: ["Inconsolata", "monospace"],
         Poppins: ["Poppins","sans-serif"],
         Unbounded :['Unbounded', "cursive"],
+        Montserrat:['Montserrat',"sans-serif"],
+        Inter:['Inter', "sans-serif"]
       }
     },
   },
