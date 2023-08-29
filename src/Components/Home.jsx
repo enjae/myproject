@@ -27,10 +27,10 @@ const Home = () => {
                   alt="Nandini Jaryal"
                 />
                 <div className="">
-                  <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-2 md:mb-5">
+                  <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-2 ">
                     Nandini Jaryal🌸
                   </h1>
-                  <p className="text-md md:text-lg lg:text-2xl text-white mb-2 md:mb-5">
+                  <p className="text-md md:text-lg lg:text-2xl text-white mb-2">
                     I enjoy turning abstract ideas into tangible solutions
                     through coding
                   </p>
