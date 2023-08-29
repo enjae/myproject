@@ -68,7 +68,7 @@ const Home = () => {
             </svg>
             <div className="">
               <div className="flex justify-center items-center flex-col">
-                <Link to="/NandiniJaryal-Resume" target="_blank" className="text-xs md:text-xl uppercase font-semibold text-center">
+                <Link to="/NandiniJaryal-Resume" className="text-xs md:text-xl uppercase font-semibold text-center">
                   Resume📄
                 </Link>
               </div>
@@ -349,10 +349,10 @@ const Home = () => {
               <path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
             </svg>
             <div className="flex flex-col">
-                  <Link target="_blank" to="/NandiniJaryal-Projects" className="text-white text-sm md:text-xl lg:text-3xl font-bold">
+                  <Link to="/NandiniJaryal-Projects" className="text-white text-sm md:text-xl lg:text-3xl font-bold">
                     Projects
                   </Link>
-                  <Link to="/NandiniJaryal-Projects" target="_blank"  className="text-white text-sm md:text-md lg:text-2xl">
+                  <Link to="/NandiniJaryal-Projects"  className="text-white text-sm md:text-md lg:text-2xl">
                     Here you find thing I usually practice.
                   </Link>
                 </div>
