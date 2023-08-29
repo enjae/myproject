@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const projects = [
   {
@@ -90,7 +91,11 @@ const Projects = () => {
       </div>
     </div>
     </div>
-
+    <footer className=" bottom-0 z-50 flex flex-cols justify-center items-center">
+    <div className="xl:max-w-[1280px] w-screen flex flex-cols ">
+      <Footer />
+    </div>
+  </footer>
      
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import Nandini from "../assets/Nandini Jaryal - enjae.jpeg";
 import { Link } from "react-router-dom";
 
@@ -367,6 +368,11 @@ const Resume = () => {
           </div>
         </div>
       </div>
+      <footer className=" bottom-0 z-50 flex flex-cols justify-center items-center">
+      <div className="xl:max-w-[1280px] w-screen flex flex-cols ">
+        <Footer />
+      </div>
+    </footer>
     </div>
   );
 };

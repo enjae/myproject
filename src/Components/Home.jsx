@@ -7,6 +7,7 @@ import flower from "../assets/flower.gif";
 import coding from "../assets/coding.gif";
 import girlcoding from "../assets/girlcoding.gif";
 import enjae from "../assets/enjae.jpeg";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
@@ -375,6 +376,12 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <footer className=" bottom-0 z-50 flex flex-cols justify-center items-center">
+      <div className="xl:max-w-[1280px] w-screen flex flex-cols ">
+        <Footer />
+      </div>
+    </footer>
+     
     </div>
   );
 };
