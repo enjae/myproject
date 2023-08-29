@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import Nandini from "../assets/Nandini Jaryal.jpeg";
+import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import flower from "../assets/flower.gif";
 import coding from "../assets/coding.gif";
@@ -18,18 +19,18 @@ const Home = () => {
           {/* ABOUT ME CARD */}
           <div className=" relative col-span-3 aspect-square md:aspect-auto md:row-span-2 bg-about rounded-3xl overflow-hidden">
             <div className="relative w-full h-full p-4 md:p-8">
-              <div className="w-full h-full flex flex-col justify-center z-10">
+              <div className="w-full h-full flex flex-col justify-center -z-10">
                 <img
                   src={Nandini}
-                  width={200}
-                  className="rounded-3xl mb-4 "
+                  width="30%"
+                  className="rounded-3xl mb-2 "
                   alt="Nandini Jaryal"
                 />
-                <div className="w-8/12 ">
-                  <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-4 md:mb-5">
+                <div className="">
+                  <h1 className="text-3xl md:text-xl lg:text-5xl font-bold text-white mb-2 md:mb-5">
                     Nandini Jaryal🌸
                   </h1>
-                  <p className="text-md md:text-lg lg:text-2xl text-white mb-4 md:mb-5">
+                  <p className="text-md md:text-lg lg:text-2xl text-white mb-2 md:mb-5">
                     I enjoy turning abstract ideas into tangible solutions
                     through coding
                   </p>
@@ -163,7 +164,7 @@ const Home = () => {
                   srcSet={coding}
                   src={coding}
                 />
-                <p className="text-md md:text-lg lg:text-2xl text-white">
+                <p className="text-white text-sm md:text-md lg:text-2xl">
                   Feel free to reach out if you'd like to talk about how I can
                   help you.
                 </p>
@@ -346,7 +347,7 @@ const Home = () => {
               <path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z" />
             </svg>
 
-            <div className="w-full h-full absolute top-0 left-0 text-white p-4 md:p-8 z-10 pointer-events-none flex flex-col justify-end">
+            <div className="w-full h-full absolute top-0 left-0 text-white p-4 md:p-8 z-10 pointer-events-none flex flex-col justify-start">
               <h2 className="font-bold text-md md:text-xl lg:text-4xl">
                 Projects
               </h2>
