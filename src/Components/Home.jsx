@@ -119,7 +119,7 @@ const Home = () => {
 
           {/* LINKEDIN BUTTON */}
           <a
-            href="https://www.linkedin.com/in/nandinijaryal//"
+            href="https://www.linkedin.com/in/nandinijaryal"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Linkedin"
