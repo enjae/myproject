@@ -270,7 +270,7 @@ className="flex flex-col justify-center items-center bg-[#49a7ff56] rounded-3xl 
 
           {/* TWITTER BUTTON */}
           <a
-            href="https://twitter.com/Enjaeee?t=z4W6--Xi5k5e2dB9VTX2OA&s=09"
+            href="https://x.com/ennginx?t=3OcOsCIQG7ThSb8j9L8kXA&s=09"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"

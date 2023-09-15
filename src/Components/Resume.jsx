@@ -1,13 +1,22 @@
 import React from "react";
+import { useEffect } from "react";
+
 import "../App.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Nandini from "../assets/Nandini Jaryal - enjae.jpeg";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Resume = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
-    <div className="md:container md:mx-auto ">
+    <div className="md:container md:mx-auto flex flex-col min-h-screen">
       <header className="sticky top-0 z-50 sm:px-16 px-6 flex justify-center items-center">
         <div className="xl:max-w-[1280px] w-full">
           <Navbar />
@@ -368,7 +377,7 @@ const Resume = () => {
           </div>
         </div>
       </div>
-      <footer className=" bottom-0 z-50 flex flex-cols justify-center items-center">
+      <footer className="mt-auto bottom-0 z-50 flex flex-cols justify-center items-center">
       <div className="xl:max-w-[1280px] w-screen flex flex-cols ">
         <Footer />
       </div>
