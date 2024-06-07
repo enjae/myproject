@@ -97,6 +97,9 @@ const Resume = () => {
                 View Projects
               </Link>
             </div>
+            <div className="md:text-sm text-center text-gray-400 mx-auto mt-2">
+            ( Last Updated: August 2023 )
+            </div>
           </div>
         </div>
         <div className="md:w-2/3 p-2 w-full sm:border-l-2">
