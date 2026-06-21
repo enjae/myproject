@@ -159,20 +159,55 @@
     .card-avatar {
       background: #17151a;
       border: var(--border-dark);
-      padding: 0;
-      overflow: hidden;
+      padding: 1.2rem;
+      overflow: visible;
+      align-items: center;
+      justify-content: center;
     }
-    .avatar-wrap { display: contents; }
+    .avatar-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
     .avatar-ring { display: none; }
     @keyframes spin {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
     }
+    @keyframes ring-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    /* spinning gradient ring */
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--pill), #f0e6d4 30%, transparent 60%, var(--pill));
+      animation: ring-spin 3s linear infinite;
+      z-index: 0;
+    }
+    /* white gap between ring and photo */
+    .avatar-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0px;
+      border-radius: 50%;
+      background: #17151a;
+      z-index: 1;
+    }
     .avatar-photo {
-      width: 100%; height: 100%;
-      border-radius: 0;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
       overflow: hidden;
-      flex: 1;
+      max-width: 180px;
     }
     .avatar-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 
@@ -579,7 +614,7 @@
           <p class="exp-company">Samsung R&amp;D Institute Bangalore</p>
           <p class="exp-desc">Building the Context Engine for Galaxy devices. Shipped Now Nudge and Privacy Display, both running across the S26, S26+, and S26 Ultra. Making Galaxy AI smarter about the things that actually matter to you.</p>
           <div class="exp-tags">
-            <span class="exp-tag">Kotlin</span><span class="exp-tag">Android SDK</span><span class="exp-tag">Jetpack</span><span class="exp-tag">GenAI</span>
+            <span class="exp-tag">Kotlin</span><span class="exp-tag">Android SDK</span><span class="exp-tag">Jetpack</span><span class="exp-tag">GenAI</span><span class="exp-tag">Artificial Intelligence</span>
           </div>
         </div>
         <span class="exp-date">Nov 2023 – Present</span>
@@ -612,6 +647,7 @@
       <span class="chip">Java</span>
       <span class="chip">Kotlin</span>
       <span class="chip">C++</span>
+      <span class="chip">Python</span>
     </div>
   </div>
 
