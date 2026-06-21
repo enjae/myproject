@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nandini Jaryal — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e12;
+      --card-dark: #17151a;
+      --card-light: #f0e6d4;
+      --card-white: #f0e6d4;
+      --shadow: 0 4px 28px rgba(0,0,0,0.55);
+      --text-light: #f0e6d4;
+      --text-dark: #1a1218;
+      --text-muted-light: rgba(240,230,212,0.5);
+      --text-muted-dark: #7a6a72;
+      --pill: #c8527e;
+      --pill-text: #f0e6d4;
+      --radius: 20px;
+      --gap: 0.75rem;
+      --border-dark: 1px solid rgba(255,255,255,0.06);
+      --border-light: 1px solid rgba(200,82,126,0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-light);
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+
+    /* ══════════════════════════════
+       MASONRY GRID — 12 cols, explicit placement
+    ══════════════════════════════ */
+    .grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: minmax(0, auto);
+      gap: var(--gap);
+    }
+
+    .card-about    { grid-column: 1 / 7;   grid-row: 1 / 2; }
+    .card-avatar   { grid-column: 7 / 10;  grid-row: 1 / 2; }
+    .card-writing  { grid-column: 10 / 13; grid-row: 1 / 3; }   /* tall #1 — arched */
+    .card-linkedin { grid-column: 1 / 4;   grid-row: 2 / 3; }
+    .card-exp      { grid-column: 4 / 10;  grid-row: 2 / 4; }   /* tall #2 */
+    .card-stack    { grid-column: 1 / 4;   grid-row: 3 / 4; }
+    .card-patents  { grid-column: 10 / 13; grid-row: 3 / 5; }   /* tall #3 */
+    .card-research { grid-column: 1 / 7;   grid-row: 4 / 5; }
+    .card-edu      { grid-column: 7 / 10;  grid-row: 4 / 5; }
+    .social-row    { grid-column: 1 / 13;  grid-row: 5 / 6; }
+
+    /* ── Card base ── */
+    .card {
+      background: var(--card-dark);
+      border: var(--border-dark);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(200,82,126,0.18);
+    }
+
+    /* ── Asymmetric corners — writing card gets arch top ── */
+    .card-about    { border-radius: 6px 20px 72px 20px; }
+    .card-avatar   { border-radius: 20px 6px 20px 72px; }
+    .card-writing  { border-radius: 20px 6px 6px 72px; }
+    .card-linkedin { border-radius: 72px 20px 20px 6px; }
+    .card-exp      { border-radius: 6px 72px 20px 20px; }
+    .card-stack    { border-radius: 20px 6px 72px 20px; }
+    .card-patents  { border-radius: 72px 20px 6px 20px; }
+    .card-research { border-radius: 20px 6px 20px 72px; }
+    .card-edu      { border-radius: 20px 72px 6px 20px; }
+    .social-row .card-social:nth-child(n) { border-radius: 999px; }
+
+    /* ── Pill label ── */
+    .pill {
+      display: inline-block;
+      align-self: flex-start;
+      width: fit-content;
+      background: var(--pill);
+      color: var(--pill-text);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      padding: 0.28rem 0.8rem;
+      margin-bottom: 1.1rem;
+    }
+
+    /* ══════════════════════════════ ABOUT ══════════════════════════════ */
+    .card-about {
+      background: var(--card-dark);
+      min-height: 200px;
+      justify-content: flex-start;
+      position: relative;
+      overflow: hidden;
+      gap: 0.4rem;
+    }
+    .card-about::before { display: none; }
+    .about-deco {
+      font-size: 1.4rem;
+      color: var(--pill);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      animation: spin 8s linear infinite;
+      display: inline-block;
+      width: fit-content;
+    }
+    .about-name {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-light);
+      letter-spacing: -0.02em;
+    }
+    .about-role-label {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--pill);
+      margin-bottom: 0.8rem;
+    }
+    .about-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted-light);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    /* ── Bracket corner decoration ── */
+    .brackets { position: relative; }
+    .brackets::before,
+    .brackets::after {
+      content: '';
+      position: absolute;
+      width: 14px; height: 14px;
+      border-color: rgba(200,82,126,0.35);
+      border-style: solid;
+      pointer-events: none;
+    }
+    .brackets::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+    .brackets::after  { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
+
+    /* ══════════════════════════════ AVATAR ══════════════════════════════ */
+    .card-avatar {
+      background: #17151a;
+      border: var(--border-dark);
+      padding: 0;
+      overflow: hidden;
+    }
+    .avatar-wrap { display: contents; }
+    .avatar-ring { display: none; }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .avatar-photo {
+      width: 100%; height: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      flex: 1;
+    }
+    .avatar-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+    /* ══════════════════════════════ WRITING (tall) ══════════════════════════════ */
+    .card-writing {
+      padding: 0;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      justify-content: flex-start;
+      border: none;
+    }
+    .writing-img {
+      flex: 1;
+      min-height: 240px;
+      background-image: url('android.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .writing-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .writing-img .pill {
+      position: absolute;
+      top: 1.1rem; left: 1.1rem;
+      margin: 0;
+      z-index: 1;
+    }
+    .writing-body {
+      background: #17151a;
+      padding: 1.3rem 1.4rem 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .writing-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+    .writing-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .writing-meta::before {
+      content: '✦';
+      color: var(--pill);
+      font-size: 0.6rem;
+    }
+
+    /* ══════════════════════════════ LINKEDIN ══════════════════════════════ */
+    .card-linkedin {
+      background: var(--card-light);
+      border: var(--border-light);
+      color: var(--text-dark);
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 200px;
+    }
+    .linkedin-logo { display: flex; align-items: center; justify-content: center; }
+    .linkedin-logo svg { width: 84px; height: 84px; }
+    .linkedin-arrow {
+      position: absolute;
+      bottom: 1.4rem; right: 1.4rem;
+      width: 40px; height: 40px;
+      background: var(--text-dark);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--card-light); font-size: 1rem;
+      transition: transform 0.2s; flex-shrink: 0;
+    }
+    .linkedin-arrow:hover { transform: scale(1.1); }
+
+    /* ══════════════════════════════ EXPERIENCE (tall) ══════════════════════════════ */
+    .card-exp {
+      background: var(--card-light);
+      border: var(--border-light);
+      color: var(--text-dark);
+      justify-content: flex-start;
+    }
+    .card-exp .pill { background: var(--pill); color: var(--pill-text); }
+    .exp-list { display: flex; flex-direction: column; flex: 1; justify-content: center; }
+    .exp-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      gap: 1rem;
+    }
+    .exp-row:first-child { padding-top: 0; }
+    .exp-left { flex: 1; }
+    .exp-title { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.15rem; }
+    .exp-company { font-size: 0.78rem; color: #777; margin-bottom: 0.35rem; }
+    .exp-desc { font-size: 0.76rem; color: #666; line-height: 1.55; margin-bottom: 0.4rem; }
+    .exp-date { font-size: 0.72rem; color: #aaa; white-space: nowrap; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .exp-tag {
+      font-size: 0.65rem; background: rgba(0,0,0,0.07); border-radius: 50px;
+      padding: 0.18rem 0.6rem; color: #888;
+    }
+
+    /* ══════════════════════════════ STACK ══════════════════════════════ */
+    .card-stack { background: var(--pill); border: none; }
+    .card-stack .pill { background: rgba(0,0,0,0.25); color: rgba(240,230,212,0.8); }
+    .stack-header {
+      margin-bottom: 0.85rem;
+    }
+    .stack-title { font-size: 1rem; font-weight: 700; color: rgba(240,230,212,0.9); }
+    .stack-sub { font-size: 0.7rem; color: rgba(28,58,0,0.6); margin-top: 0.15rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .chip {
+      background: rgba(0,0,0,0.18); border-radius: 50px;
+      padding: 0.3rem 0.75rem; font-size: 0.72rem; font-weight: 600;
+      color: rgba(240,230,212,0.85);
+    }
+
+    /* ══════════════════════════════ PATENTS (tall) ══════════════════════════════ */
+    .card-patents {
+      background: var(--card-dark);
+      border: var(--border-dark);
+      justify-content: flex-start;
+    }
+    .patent-header {
+      margin-bottom: 1.2rem;
+    }
+    .patent-count {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--text-light);
+      line-height: 1;
+    }
+    .patent-count-label {
+      font-size: 0.68rem;
+      color: var(--text-muted-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+    .patent-list { display: flex; flex-direction: column; gap: 1rem; }
+    .patent-item { display: flex; gap: 0.7rem; align-items: flex-start; }
+    .patent-num {
+      font-size: 0.58rem; font-weight: 700;
+      background: rgba(240,230,212,0.08); border-radius: 50px;
+      padding: 0.2rem 0.55rem; color: rgba(240,230,212,0.4); flex-shrink: 0; margin-top: 2px;
+    }
+    .patent-title {
+      font-size: 0.78rem; color: rgba(240,230,212,0.55); line-height: 1.55;
+    }
+
+    /* ══════════════════════════════ RESEARCH (wide) ══════════════════════════════ */
+    .card-research {
+      background: #0f1320;
+      border: 1px solid rgba(100,130,255,0.12);
+      flex-direction: row;
+      align-items: stretch;
+      padding: 0;
+      overflow: hidden;
+    }
+    .research-visual {
+      width: 38%; flex-shrink: 0;
+      background: linear-gradient(135deg, #1b2440 0%, #0f3460 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.3rem; padding: 1rem;
+    }
+    .research-visual .big { font-size: 2.2rem; font-weight: 700; color: #aac4ff; line-height: 1; }
+    .research-visual .small { font-size: 0.65rem; color: rgba(170,196,255,0.65); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+    .research-body {
+      padding: 1.5rem 1.6rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .card-research .pill { background: rgba(120,160,255,0.2); color: #aac4ff; }
+    .research-title {
+      font-size: 0.95rem; color: #e8efff; line-height: 1.5; font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .research-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      align-self: flex-start;
+      font-size: 0.7rem; color: #aac4ff; background: rgba(120,160,255,0.12);
+      border-radius: 50px; padding: 0.35rem 0.85rem; font-weight: 500;
+    }
+
+    /* ══════════════════════════════ EDUCATION ══════════════════════════════ */
+    .card-edu {
+      background: var(--card-light);
+      border: var(--border-light);
+      color: var(--text-dark);
+    }
+    .card-edu .pill { background: var(--pill); color: var(--pill-text); }
+    .edu-degree { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); line-height: 1.4; margin-bottom: 0.3rem; }
+    .edu-school { font-size: 0.8rem; color: #777; margin-bottom: 0.9rem; }
+    .edu-pills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .edu-pill {
+      font-size: 0.68rem; background: rgba(0,0,0,0.07); border-radius: 50px;
+      padding: 0.22rem 0.7rem; color: #666;
+    }
+
+    /* ══════════════════════════════ SOCIAL ROW — big pill ══════════════════════════════ */
+    .social-row {
+      background: var(--card-dark);
+      border: var(--border-dark);
+      border-radius: 999px;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: var(--shadow);
+      gap: 0.5rem;
+    }
+    .card-social {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      border-radius: 999px;
+      padding: 0.65rem 1.1rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      flex: 1;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+    .card-social:hover {
+      background: rgba(240,230,212,0.06);
+      transform: none;
+      box-shadow: none;
+    }
+    .card-social a { text-decoration: none; color: inherit; display: contents; }
+    .social-icon-wrap {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(240,230,212,0.07);
+      border: 1px solid rgba(240,230,212,0.07);
+      border-radius: 10px;
+      color: var(--text-light);
+      flex-shrink: 0;
+    }
+    .social-handle {
+      font-size: 0.75rem;
+      color: var(--text-muted-light);
+      white-space: nowrap;
+    }
+    .card-social.contact {
+      background: rgba(200,82,126,0.1);
+      border: 1px solid rgba(200,82,126,0.22);
+    }
+    .card-social.contact:hover { background: rgba(200,82,126,0.18); }
+    .card-social.contact .social-icon-wrap {
+      background: rgba(200,82,126,0.15);
+      border-color: rgba(200,82,126,0.2);
+      color: var(--pill);
+    }
+    .card-social.contact .social-handle { color: rgba(240,230,212,0.65); }
+    .card-social.contact a { color: var(--text-light); }
+
+    /* ══════════════════════════════ FOOTER ══════════════════════════════ */
+    .footer {
+      grid-column: 1 / 13;
+      text-align: center;
+      font-size: 0.68rem;
+      color: rgba(240,230,212,0.2);
+      padding: 0.5rem 0 0.25rem;
+      letter-spacing: 0.03em;
+    }
+    .footer a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+    /* ══════════════════════════════ RESPONSIVE ══════════════════════════════ */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: auto; }
+      .card-about    { grid-column: 1 / 5; grid-row: auto; }
+      .card-avatar   { grid-column: 5 / 7; grid-row: auto; }
+      .card-linkedin { grid-column: 1 / 3; grid-row: auto; }
+      .card-exp      { grid-column: 3 / 7; grid-row: auto; }
+      .card-writing  { grid-column: 5 / 7; grid-row: auto; border-radius: 100px 100px 6px 40px; }
+      .card-stack    { grid-column: 1 / 4; grid-row: auto; }
+      .card-edu      { grid-column: 4 / 7; grid-row: auto; }
+      .card-patents  { grid-column: 1 / 4; grid-row: auto; }
+      .card-research { grid-column: 1 / 7; grid-row: auto; }
+      .social-row    { grid-column: 1 / 7; grid-row: auto; grid-template-columns: repeat(5, 1fr); }
+      .footer        { grid-column: 1 / 7; }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0.65rem; }
+      :root { --radius: 16px; --gap: 0.55rem; }
+      .grid { grid-template-columns: 1fr; }
+      .grid > * { grid-column: 1 / 2 !important; grid-row: auto !important; }
+      .card-writing { border-radius: 100px 100px 6px 40px !important; min-height: 300px; }
+      .card-avatar { min-height: 260px; }
+      .card-linkedin { min-height: 200px; }
+      .card-research { flex-direction: column; }
+      .research-visual { width: 100%; min-height: 110px; }
+      .social-row { grid-template-columns: repeat(2, 1fr) !important; }
+      .card-social:nth-child(5) { grid-column: span 2 !important; }
+      .about-statement { font-size: 1.2rem; }
+      .brackets::before, .brackets::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="grid">
+
+  <!-- About -->
+  <div class="card card-about">
+    <span class="about-deco">✦</span>
+    <p class="about-name">Nandini Jaryal</p>
+    <p class="about-role-label">Software Engineer</p>
+    <p class="about-sub">I care about how things feel, not just how they work. Building systems that run on-device, ship at scale, and actually make sense to the people using them.</p>
+  </div>
+
+  <!-- Avatar -->
+  <div class="card card-avatar">
+    <div class="avatar-wrap">
+      <svg class="avatar-ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="ring" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/>
+        </defs>
+        <text font-size="10.5" fill="#1a1a1a" font-family="Inter,sans-serif" font-weight="600" letter-spacing="4.2">
+          <textPath href="#ring" startOffset="0%">✦ AVAILABLE FOR WORK ✦ AVAILABLE FOR WORK ✦ </textPath>
+        </text>
+      </svg>
+      <div class="avatar-photo"><img src="avatar.jpg" alt="Nandini Jaryal"></div>
+    </div>
+  </div>
+
+  <!-- Writing (tall, top-right) -->
+  <a href="https://nandinijaryal.medium.com/gemini-nano-is-10-of-the-product-heres-rest-90-e55691c86464" target="_blank" class="card card-writing">
+    <div class="writing-img">
+      <span class="pill">Writing</span>
+    </div>
+    <div class="writing-body">
+      <p class="writing-title">Gemini Nano is 10% of the Product. Here's the Other 90%</p>
+      <p class="writing-meta">Medium · 2025 · Read on Medium</p>
+    </div>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/nandinijaryal/" target="_blank" class="card card-linkedin">
+    <div class="linkedin-logo">
+      <svg viewBox="0 0 24 24" fill="#1a1218" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    </div>
+    <div class="linkedin-arrow">↗</div>
+  </a>
+
+  <!-- Experience (tall, center) -->
+  <div class="card card-exp brackets">
+    <span class="pill">Experience</span>
+    <div class="exp-list">
+      <div class="exp-row">
+        <div class="exp-left">
+          <p class="exp-title">Software Engineer</p>
+          <p class="exp-company">Samsung R&amp;D Institute Bangalore</p>
+          <p class="exp-desc">Building the Context Engine for Galaxy devices. Shipped Now Nudge and Privacy Display, both running across the S26, S26+, and S26 Ultra. Making Galaxy AI smarter about the things that actually matter to you.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Kotlin</span><span class="exp-tag">Android SDK</span><span class="exp-tag">Jetpack</span><span class="exp-tag">GenAI</span>
+          </div>
+        </div>
+        <span class="exp-date">Nov 2023 – Present</span>
+      </div>
+      <div class="exp-row">
+        <div class="exp-left">
+          <p class="exp-title">Software Engineer Intern</p>
+          <p class="exp-company">Samsung R&amp;D Institute Bangalore</p>
+          <p class="exp-desc">Automated test infrastructure for the Android framework team using Python and C++. Built CI pipelines with GitHub Actions that cut manual QA time significantly.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Python</span><span class="exp-tag">C++</span><span class="exp-tag">GitHub Actions</span>
+          </div>
+        </div>
+        <span class="exp-date">Jun – Aug 2022</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stack -->
+  <div class="card card-stack">
+    <span class="pill">Stack</span>
+    <div class="stack-header">
+      <p class="stack-title">What I work with</p>
+    </div>
+    <div class="chips">
+      <span class="chip">Machine Learning</span>
+      <span class="chip">Artificial Intelligence</span>
+      <span class="chip">GenAI</span>
+      <span class="chip">Android Framework</span>
+      <span class="chip">Java</span>
+      <span class="chip">Kotlin</span>
+      <span class="chip">C++</span>
+    </div>
+  </div>
+
+  <!-- Patents (tall, bottom-right) -->
+  <div class="card card-patents brackets">
+    <span class="pill">Patents Filed</span>
+    <div class="patent-header">
+      <p class="patent-count">03</p>
+      <p class="patent-count-label">Filed · Samsung</p>
+    </div>
+    <div class="patent-list">
+      <div class="patent-item">
+        <span class="patent-num">01</span>
+        <p class="patent-title">A Context-Aware AI-powered Framework for Exercise Pattern Recognition and Personalised Behavioral Nudges</p>
+      </div>
+      <div class="patent-item">
+        <span class="patent-num">02</span>
+        <p class="patent-title">Adaptive Travel Detection Using Machine Learning and Personalized Mobility Patterns for Agentic AI Systems</p>
+      </div>
+      <div class="patent-item">
+        <span class="patent-num">03</span>
+        <p class="patent-title">Next Activity Prediction System and Methods using Advanced Markov Decision Process</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research (wide) -->
+  <div class="card card-research">
+    <div class="research-visual">
+      <span class="big">IEEE</span>
+      <span class="small">CONECCT 2026</span>
+    </div>
+    <div class="research-body">
+      <span class="pill">Research</span>
+      <p class="research-title">Leveraging Machine Learning for Sensor-Enhanced Network Switching for Seamless Connectivity</p>
+      <span class="research-badge">✦ Accepted · 12th IEEE CONECCT 2026</span>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="card card-edu">
+    <span class="pill">Education</span>
+    <p class="edu-degree">B.Tech, Computer Science &amp; Engineering</p>
+    <p class="edu-school">Dr. B.R. Ambedkar NIT Jalandhar</p>
+    <div class="edu-pills">
+      <span class="edu-pill">2019 – 2023</span>
+      <span class="edu-pill">CGPA 8.01</span>
+    </div>
+  </div>
+
+  <!-- Social row -->
+  <div class="social-row">
+    <div class="card card-social">
+      <a href="https://x.com/enjaexoxo" target="_blank">
+        <div class="social-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </div>
+        <span class="social-handle">@enjaexoxo</span>
+      </a>
+    </div>
+    <div class="card card-social">
+      <a href="https://www.instagram.com/enjae_?igsh=MTJjYnN4ZmMzbXY3eg%3D%3D&utm_source=qr" target="_blank">
+        <div class="social-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <span class="social-handle">@enjae_</span>
+      </a>
+    </div>
+    <div class="card card-social">
+      <a href="https://nandinijaryal.medium.com/" target="_blank">
+        <div class="social-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+        </div>
+        <span class="social-handle">@nandinijaryal</span>
+      </a>
+    </div>
+    <div class="card card-social">
+      <a href="https://www.linkedin.com/in/nandinijaryal/" target="_blank">
+        <div class="social-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </div>
+        <span class="social-handle">NandiniJaryal</span>
+      </a>
+    </div>
+    <div class="card card-social contact">
+      <a href="mailto:nandinijaryalwork@gmail.com">
+        <div class="social-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <span class="social-handle">Say Hello</span>
+      </a>
+    </div>
+  </div>
+
+  <p class="footer">100% vibe coded with <a href="https://claude.ai/code" target="_blank">Claude Code</a> &nbsp;·&nbsp; Designed &amp; built by Nandini Jaryal &nbsp;·&nbsp; 2026</p>
+
+</div>
+</body>
+</html>
