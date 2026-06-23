@@ -74,17 +74,12 @@
       box-shadow: 0 12px 40px rgba(200,82,126,0.18);
     }
 
-    /* ── Asymmetric corners — writing card gets arch top ── */
-    .card-about    { border-radius: 6px 20px 72px 20px; }
-    .card-avatar   { border-radius: 20px 6px 20px 72px; }
-    .card-writing  { border-radius: 20px 6px 6px 72px; }
-    .card-linkedin { border-radius: 72px 20px 20px 6px; }
-    .card-exp      { border-radius: 6px 72px 20px 20px; }
-    .card-stack    { border-radius: 20px 6px 72px 20px; }
-    .card-patents  { border-radius: 72px 20px 6px 20px; }
-    .card-research { border-radius: 20px 6px 20px 72px; }
-    .card-edu      { border-radius: 20px 72px 6px 20px; }
-    .social-row .card-social:nth-child(n) { border-radius: 999px; }
+    /* ── Uniform slightly-rounded polygon corners ── */
+    .card-about, .card-avatar, .card-writing,
+    .card-linkedin, .card-exp, .card-stack,
+    .card-patents, .card-research, .card-edu { border-radius: 10px; }
+    .card-avatar { border-radius: 10px !important; }
+    .card-social { border-radius: 10px; }
 
     /* ── Pill label ── */
     .pill {
@@ -161,7 +156,7 @@
       border: var(--border-dark);
       padding: 0;
       overflow: hidden;
-      border-radius: 50% 50% 8px 8px !important;
+      border-radius: 10px !important;
     }
     .avatar-wrap { display: contents; }
     .avatar-ring { display: none; }
