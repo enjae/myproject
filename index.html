@@ -750,18 +750,31 @@
     border-color: var(--pill);
   }
 
-  /* ── Tactile card interactions ── */
+  /* ── Spotlight focus effect ── */
   .card {
-    transform-style: preserve-3d;
-    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.23,1,0.32,1),
+                filter 0.5s cubic-bezier(0.23,1,0.32,1),
+                opacity 0.5s cubic-bezier(0.23,1,0.32,1),
+                box-shadow 0.5s cubic-bezier(0.23,1,0.32,1) !important;
+    will-change: transform, filter, opacity;
+  }
+  /* when grid is in focus-mode, dim all cards */
+  .grid.focus-mode .card {
+    filter: blur(3px) brightness(0.55);
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+  /* the focused card pops forward */
+  .grid.focus-mode .card.focused {
+    filter: blur(0) brightness(1);
+    opacity: 1;
+    transform: scale(1.035);
+    box-shadow: 0 20px 60px rgba(200,82,126,0.25), 0 8px 32px rgba(0,0,0,0.6) !important;
+    z-index: 10;
   }
   .card:active {
-    transform: translateY(1px) scale(0.985) !important;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.5) !important;
-    transition: transform 0.08s ease, box-shadow 0.08s ease !important;
-  }
-  .card-social:active {
-    transform: scale(0.93) !important;
+    transform: scale(1.02) !important;
+    transition: transform 0.08s ease !important;
   }
 
   /* hide cursor on mobile/touch */
@@ -796,7 +809,7 @@
   }
   animateRing();
 
-  // Hover state on interactive elements
+  // Cursor hover state
   const hoverTargets = 'a, button, .card, .card-social, [role="button"]';
   document.querySelectorAll(hoverTargets).forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
@@ -807,16 +820,23 @@
   document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
   document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
 
-  // Tactile tilt on cards (subtle 3D)
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width  - 0.5;
-      const y = (e.clientY - r.top)  / r.height - 0.5;
-      card.style.transform = `translateY(-3px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+  // Spotlight focus effect
+  const grid = document.querySelector('.grid');
+  const cards = document.querySelectorAll('.card');
+  let leaveTimer;
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      clearTimeout(leaveTimer);
+      grid.classList.add('focus-mode');
+      cards.forEach(c => c.classList.remove('focused'));
+      card.classList.add('focused');
     });
     card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
+      card.classList.remove('focused');
+      leaveTimer = setTimeout(() => {
+        grid.classList.remove('focus-mode');
+      }, 120);
     });
   });
 </script>
