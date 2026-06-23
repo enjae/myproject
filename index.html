@@ -701,5 +701,124 @@
   <p class="footer">100% vibe coded with <a href="https://claude.ai/code" target="_blank">Claude Code</a> &nbsp;·&nbsp; Designed &amp; built by Nandini Jaryal &nbsp;·&nbsp; 2026</p>
 
 </div>
+
+<!-- Custom cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<style>
+  /* ── Custom cursor ── */
+  body { cursor: none; }
+  a, button, .card, [role="button"] { cursor: none; }
+
+  #cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 8px; height: 8px;
+    background: var(--pill);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+  }
+  #cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    width: 36px; height: 36px;
+    border: 1.5px solid rgba(200,82,126,0.55);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease, opacity 0.2s ease;
+  }
+  body.cursor-hover #cursor-dot {
+    width: 12px; height: 12px;
+    background: #f0e6d4;
+  }
+  body.cursor-hover #cursor-ring {
+    width: 52px; height: 52px;
+    border-color: rgba(200,82,126,0.85);
+  }
+  body.cursor-click #cursor-dot {
+    width: 6px; height: 6px;
+    background: #f0e6d4;
+  }
+  body.cursor-click #cursor-ring {
+    width: 28px; height: 28px;
+    border-color: var(--pill);
+  }
+
+  /* ── Tactile card interactions ── */
+  .card {
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .card:active {
+    transform: translateY(1px) scale(0.985) !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5) !important;
+    transition: transform 0.08s ease, box-shadow 0.08s ease !important;
+  }
+  .card-social:active {
+    transform: scale(0.93) !important;
+  }
+
+  /* hide cursor on mobile/touch */
+  @media (hover: none) {
+    body { cursor: auto; }
+    #cursor-dot, #cursor-ring { display: none; }
+  }
+</style>
+
+<script>
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+  let rafId;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
+
+  // Ring follows with smooth lag
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    rafId = requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover state on interactive elements
+  const hoverTargets = 'a, button, .card, .card-social, [role="button"]';
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // Click press
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+  document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
+
+  // Tactile tilt on cards (subtle 3D)
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `translateY(-3px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+</script>
 </body>
 </html>
