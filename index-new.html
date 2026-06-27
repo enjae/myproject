@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nandini Jaryal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:    #ffffff;
+      --tile:  #f0ebe2;
+      --text:  #1c1917;
+      --muted: #9a8a7a;
+      --gap:   1.5rem;
+      --r:     14px;
+      --sans:  'Unbounded', system-ui, sans-serif;
+    }
+
+    html { font-size: 85%; }
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── PAGE: hero | content area ── */
+    .page {
+      display: grid;
+      grid-template-columns: 48fr 52fr;
+      gap: var(--gap);
+      height: 100vh;
+      padding: var(--gap);
+    }
+
+    /* ── LEFT COL: hero + links (connect = half of 192px IEEE) ── */
+    .left-col {
+      display: grid;
+      grid-template-rows: 1fr 96px;
+      gap: var(--gap);
+    }
+
+    /* ── CONTENT AREA: two independent sub-columns ── */
+    .content-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+
+    .center-col {
+      display: grid;
+      grid-template-rows: 280px 1fr 192px;
+      gap: var(--gap);
+    }
+
+    .right-col {
+      display: grid;
+      grid-template-rows: 148px 1fr 200px;
+      gap: var(--gap);
+    }
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    .hero {
+      background: url('hero-bg.jpg') center center / cover no-repeat;
+      border-radius: var(--r);
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-name {
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.76);
+      line-height: 1.55;
+      position: relative;
+      max-width: 280px;
+    }
+
+    .hero-bio {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.65;
+      margin-top: 0.9rem;
+      max-width: 300px;
+      position: relative;
+    }
+
+    /* ════════════════════════════
+       LINKS BAR
+    ════════════════════════════ */
+    .links-bar {
+      background: url('hero-bg.jpg') center bottom / cover no-repeat;
+      border-radius: var(--r);
+      padding: 0 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .links-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+
+    .links-row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .link-pill {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.28);
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .link-pill:hover {
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    /* shared shadow for all content tiles */
+    .card-blog, .card-patents, .card-ieee,
+    .card-edu, .card-exp, a.card-resume {
+      border: none;
+      box-shadow: none;
+    }
+
+    /* ── TYPOGRAPHIC HIERARCHY ── */
+    .h-pink {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #1c1917;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+    }
+    .h-primary {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1c1917;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    .h-secondary {
+      font-size: 0.78rem;
+      color: #1c1917;
+      line-height: 1.55;
+    }
+
+    /* ════════════════════════════
+       BLOG
+    ════════════════════════════ */
+    .card-blog {
+      background: var(--tile);
+      border-radius: var(--r);
+      padding: 0;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-radius 0.6s;
+    }
+
+
+
+    .card-blog:hover {
+      transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+    }
+
+    .blog-thumb {
+      width: 100%;
+      height: 140px;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--r) var(--r) 0 0;
+    }
+
+    .blog-body {
+      padding: 1.4rem 1.5rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex: 1;
+      gap: 0.5rem;
+    }
+
+    .blog-eyebrow {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #e05870;
+      margin-bottom: 0.3rem;
+    }
+
+    .blog-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #1c1917;
+      flex: 1;
+    }
+
+    .blog-arrow {
+      font-size: 0.82rem;
+      color: #b89070;
+      align-self: flex-end;
+      margin-top: auto;
+    }
+
+    /* ════════════════════════════
+       PATENTS
+    ════════════════════════════ */
+    .card-patents {
+      background: var(--tile);
+      border-radius: var(--r);
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #e05870;
+      margin-bottom: 0.7rem;
+    }
+
+    .patent-count {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #1c1917;
+      letter-spacing: -0.04em;
+    }
+
+    .patent-filed {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #9a7a5a;
+      margin-bottom: 1rem;
+      margin-top: 0.1rem;
+    }
+
+    .patent-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-top: auto;
+    }
+
+    .patent-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .patent-n {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #b89870;
+      background: rgba(28,25,23,0.07);
+      border-radius: 50px;
+      padding: 0.18rem 0.5rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .patent-title {
+      font-size: 0.72rem;
+      color: #7a6045;
+      line-height: 1.45;
+    }
+
+    /* ════════════════════════════
+       IEEE
+    ════════════════════════════ */
+    .card-ieee {
+      background: var(--tile);
+      border-radius: var(--r);
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+
+    .ieee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(28,25,23,0.07);
+      border: 1px solid rgba(28,25,23,0.12);
+      border-radius: 50px;
+      padding: 0.26rem 0.7rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text);
+      width: fit-content;
+    }
+
+    .ieee-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    /* ════════════════════════════
+       EXPERIENCE
+    ════════════════════════════ */
+    .card-exp {
+      background: url('exp.jpg') center center / cover no-repeat;
+      border-radius: var(--r);
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-exp .h-pink,
+    .card-exp .h-primary,
+    .card-exp .h-secondary,
+    .card-exp .exp-role,
+    .card-exp .exp-company,
+    .card-exp .exp-desc,
+    .card-exp .exp-tag,
+    .card-exp .exp-date-pill { color: #fff; }
+
+    .card-exp .exp-tag { color: #fff; background: rgba(216,179,199,0.25); border-color: #d8b3c7; }
+    .card-exp .exp-date-pill { color: #fff; background: rgba(216,179,199,0.25); border-color: #d8b3c7; }
+
+    .exp-entry { margin-bottom: 1rem; }
+    .exp-entry:last-of-type { margin-bottom: 0; }
+
+    .exp-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 0.75rem 0;
+    }
+
+    .exp-role {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-company {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-date-pill {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--muted);
+      border: 1px solid rgba(28,25,23,0.15);
+      border-radius: 50px;
+      padding: 0.15rem 0.55rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-desc {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 0.55rem;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: auto;
+    }
+
+    .exp-tag {
+      font-size: 0.6rem;
+      color: var(--muted);
+      border: 1px solid rgba(28,25,23,0.12);
+      border-radius: 50px;
+      padding: 0.14rem 0.5rem;
+    }
+
+    /* ════════════════════════════
+       EDUCATION
+    ════════════════════════════ */
+    .card-edu {
+      background: var(--tile);
+      border-radius: var(--r);
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+
+    .edu-degree {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1c1917;
+      line-height: 1.35;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-school {
+      font-size: 0.7rem;
+      color: #9a7a5a;
+      margin-bottom: 0.65rem;
+    }
+
+    .edu-pills {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-pill {
+      font-size: 0.62rem;
+      color: #9a7a5a;
+      background: rgba(28,25,23,0.07);
+      border-radius: 50px;
+      padding: 0.18rem 0.6rem;
+    }
+
+    /* ════════════════════════════
+       RESUME
+    ════════════════════════════ */
+    a.card-resume {
+      background: var(--tile);
+      border-radius: var(--r);
+      padding: 1.3rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none;
+      position: relative;
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+    }
+
+    a.card-resume:hover {
+      transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+    }
+
+    .resume-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #a08060;
+      margin-bottom: 0.9rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* stacked card layers */
+    .resume-stack {
+      flex: 1;
+      position: relative;
+      min-height: 110px;
+    }
+
+    .resume-card {
+      position: absolute;
+      inset: 8px 4px 0;
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.75rem 0.85rem;
+      box-shadow: 0 2px 12px rgba(28,25,23,0.08);
+    }
+
+    .resume-card-back2 {
+      transform: rotate(-4deg);
+      background: #f9c0c8;
+      z-index: 0;
+    }
+
+    .resume-card-back1 {
+      transform: rotate(-1.8deg);
+      background: #fde8ec;
+      z-index: 1;
+    }
+
+    .resume-card-front {
+      transform: rotate(0deg);
+      z-index: 2;
+    }
+
+    .resume-name {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #1c1917;
+      margin-bottom: 0.1rem;
+    }
+
+    .resume-role {
+      font-size: 0.65rem;
+      color: #9a7a5a;
+      margin-bottom: 0.55rem;
+    }
+
+    .resume-section-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c8527e;
+      margin-bottom: 0.25rem;
+    }
+
+    .resume-entry {
+      font-size: 0.6rem;
+      color: #7a6a60;
+      line-height: 1.5;
+    }
+
+    .resume-view-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1c1917;
+      margin-top: 0.85rem;
+      text-align: center;
+    }
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+
+    /* ── BIG SCREENS: ≥ 1600px ── */
+    @media (min-width: 1600px) {
+      .page {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 2rem;
+        gap: 2rem;
+      }
+      .left-col { grid-template-rows: 1fr 112px; }
+      .center-col { grid-template-rows: 320px 1fr 220px; }
+      .right-col { grid-template-rows: 180px 1fr 240px; }
+      .hero-name { font-size: clamp(3rem, 3.5vw, 5rem); }
+      .h-pink { font-size: 2.2rem; }
+    }
+
+    /* ── LAPTOP: 1280px – 1599px (default styles apply, just constrain max) ── */
+    @media (min-width: 1280px) and (max-width: 1599px) {
+      .page { max-width: 1560px; margin: 0 auto; }
+    }
+
+    /* ── TABLET LANDSCAPE: 769px – 1024px ── */
+    @media (max-width: 1024px) {
+      html, body { height: auto; overflow: auto; }
+
+      .page {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 1.25rem;
+        gap: 1.25rem;
+      }
+
+      .left-col { grid-template-rows: 460px 90px; }
+
+      .content-area {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+
+      .center-col { grid-template-rows: 270px auto auto; }
+      .right-col  { grid-template-rows: 148px auto auto; }
+
+      .card-patents, .card-ieee, .card-edu, .card-exp, a.card-resume {
+        overflow: visible; height: auto;
+      }
+    }
+
+    /* ── TABLET PORTRAIT: 641px – 768px ── */
+    @media (max-width: 768px) {
+      :root { --gap: 1.1rem; }
+
+      .left-col { grid-template-rows: 400px 82px; }
+
+      .content-area { grid-template-columns: 1fr 1fr; }
+
+      .center-col { grid-template-rows: 250px auto auto; }
+      .right-col  { grid-template-rows: 130px auto auto; }
+
+      .h-pink    { font-size: 1.6rem; }
+      .h-primary { font-size: 0.95rem; }
+    }
+
+    /* ── MOBILE: ≤ 640px ── */
+    @media (max-width: 640px) {
+      :root { --gap: 0.875rem; --r: 12px; }
+
+      .page {
+        grid-template-columns: 1fr;
+        padding: 0.875rem;
+      }
+
+      .left-col { grid-template-rows: 360px 70px; }
+
+      .content-area { grid-template-columns: 1fr; }
+
+      .center-col, .right-col { grid-template-rows: auto; }
+
+      .card-patents, .card-ieee, .card-edu, .card-exp,
+      .card-blog, a.card-resume {
+        overflow: visible; height: auto; min-height: unset;
+      }
+      .card-blog { overflow: hidden; }
+      .card-blog .blog-thumb { height: 200px; }
+
+      .h-pink    { font-size: 1.4rem; }
+      .h-primary { font-size: 0.88rem; }
+      .hero-name { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+      .links-bar { padding: 0 1rem; gap: 0.4rem; }
+      .links-row { flex-wrap: wrap; justify-content: flex-end; gap: 0.4rem; }
+      .link-pill { font-size: 0.8rem; padding: 0.42rem 0.85rem; }
+    }
+
+    /* ── SMALL MOBILE: ≤ 390px ── */
+    @media (max-width: 390px) {
+      .left-col { grid-template-rows: 320px 100px; }
+      .links-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 1rem;
+        gap: 0.6rem;
+      }
+      .links-row { width: 100%; justify-content: flex-start; }
+    }
+
+    /* ── INTRO ANIMATION ── */
+    @keyframes overlay-out {
+      0%   { opacity: 1; }
+      40%  { opacity: 1; }
+      100% { opacity: 0; pointer-events: none; }
+    }
+
+    @keyframes page-reveal {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    #page-overlay {
+      position: fixed;
+      inset: 0;
+      background: #0e0e0e;
+      z-index: 99999;
+      pointer-events: none;
+      animation: overlay-out 2.8s ease-in-out forwards;
+    }
+
+    .page {
+      animation: page-reveal 2s ease-out 0.6s both;
+    }
+
+    /* ── CUSTOM CURSOR ── */
+    @media (pointer: fine) {
+      * { cursor: none !important; }
+
+      #cursor-dot {
+        position: fixed;
+        top: 0; left: 0;
+        width: 12px; height: 12px;
+        background: #1c1917;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s, height 0.2s, background 0.2s;
+      }
+
+      #cursor-ring {
+        position: fixed;
+        top: 0; left: 0;
+        width: 56px; height: 56px;
+        border: 1.5px solid rgba(28,25,23,0.4);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+      }
+
+      body.cursor-hover #cursor-dot {
+        width: 18px; height: 18px;
+        background: #e05870;
+      }
+      body.cursor-hover #cursor-ring {
+        width: 72px; height: 72px;
+        border-color: rgba(224,88,112,0.35);
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="page-overlay"></div>
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div class="page">
+
+  <!-- ── LEFT ── -->
+  <div class="left-col">
+    <div class="hero">
+      <h1 class="hero-name">Nandini<br>Jaryal</h1>
+      <p class="hero-tagline">Software Engineer.<br>AI. Android. Samsung.</p>
+      <p class="hero-bio">I care about how things feel, not just how they work. Building systems that run on-device, ship at scale, and actually make sense to the people using them.</p>
+    </div>
+    <div class="links-bar">
+      <span class="links-label">Say hello</span>
+      <div class="links-row">
+        <a href="mailto:jarialnandini1911@gmail.com" class="link-pill">Email ↗</a>
+        <a href="https://www.linkedin.com/in/nandinijaryal/" target="_blank" class="link-pill">LinkedIn ↗</a>
+        <a href="https://x.com/enjaexoxo" target="_blank" class="link-pill">X ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTENT AREA ── -->
+  <div class="content-area">
+
+  <!-- ── CENTER ── -->
+  <div class="center-col">
+
+    <!-- Blog -->
+    <a href="https://nandinijaryal.medium.com/gemini-nano-is-10-of-the-product-heres-rest-90-e55691c86464"
+       target="_blank" class="card-blog">
+      <img class="blog-thumb" src="android.jpg" alt="Gemini Nano article">
+      <div class="blog-body">
+        <p class="h-pink">Writing</p>
+        <p class="h-primary" style="font-weight: 400;">Gemini Nano is 10% of the Product. Here's the Other 90%</p>
+        <span class="blog-arrow">↗ Read on Medium</span>
+      </div>
+    </a>
+
+    <!-- Patents -->
+    <div class="card-patents">
+      <p class="h-pink">Patents</p>
+      <div class="patent-list" style="margin-top:0.6rem;">
+        <div class="patent-row">
+          <span class="patent-n">01</span>
+          <p class="h-secondary">A Context-Aware AI-powered Framework for Exercise Pattern Recognition and Personalised Behavioral Nudges</p>
+        </div>
+        <div class="patent-row">
+          <span class="patent-n">02</span>
+          <p class="h-secondary">Adaptive Travel Detection Using Machine Learning and Personalized Mobility Patterns for Agentic AI Systems</p>
+        </div>
+        <div class="patent-row">
+          <span class="patent-n">03</span>
+          <p class="h-secondary">Next Activity Prediction System and Methods using Advanced Markov Decision Process</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IEEE -->
+    <div class="card-ieee">
+      <p class="h-pink">Research</p>
+      <div class="patent-list" style="margin-top:0.6rem;">
+        <div class="patent-row">
+          <span class="patent-n">01</span>
+          <p class="h-secondary">Leveraging Machine Learning for Sensor-Enhanced Network Switching for Seamless Connectivity &nbsp;·&nbsp; <em>IEEE CONECCT 2026</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── RIGHT ── -->
+  <div class="right-col">
+
+    <!-- Education -->
+    <div class="card-edu">
+      <p class="h-pink">Education</p>
+      <p class="h-primary" style="margin-top:0.4rem;">B.Tech Computer Science and Engineering</p>
+      <p class="h-secondary" style="margin-top:0.3rem;">Dr B.R. Ambedkar NIT Jalandhar &nbsp;·&nbsp; 2019–2023</p>
+    </div>
+
+    <!-- Experience -->
+    <div class="card-exp">
+      <p class="h-pink">Experience</p>
+
+      <div class="exp-entry" style="margin-top:0.6rem;">
+        <p class="h-primary">Software Engineer</p>
+        <p class="h-secondary" style="margin-top:0.2rem;">Samsung R&amp;D · Nov 2023 – Present</p>
+        <p class="h-secondary">Building the Context Engine for Galaxy devices. Shipped Now Nudge and Privacy Display across the S26, S26+, and S26 Ultra.</p>
+        <div class="exp-tags" style="margin-top:0.4rem;">
+          <span class="exp-tag">Kotlin</span>
+          <span class="exp-tag">Android SDK</span>
+          <span class="exp-tag">Jetpack</span>
+          <span class="exp-tag">GenAI</span>
+          <span class="exp-tag">ML</span>
+        </div>
+      </div>
+
+      <div class="exp-divider"></div>
+
+      <div class="exp-entry">
+        <p class="h-primary">Software Engineer Intern</p>
+        <p class="h-secondary" style="margin-top:0.2rem;">Samsung R&amp;D · Jun – Aug 2022</p>
+        <p class="h-secondary">Automated test infrastructure for the Android framework team. Built CI pipelines with GitHub Actions.</p>
+        <div class="exp-tags" style="margin-top:0.4rem;">
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">C++</span>
+          <span class="exp-tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume -->
+    <a href="https://drive.google.com/file/d/1_gJB00YH-moQZdKpwa5paTJ2rM-zvwFv/view?usp=sharing" target="_blank" class="card-resume">
+      <div class="resume-stack">
+        <div class="resume-card resume-card-back2"></div>
+        <div class="resume-card resume-card-back1"></div>
+        <div class="resume-card resume-card-front">
+          <p class="resume-name">Nandini Jaryal ✦</p>
+          <p class="resume-role">Software Engineer · Samsung R&amp;D</p>
+          <p class="resume-section-label">Experience</p>
+          <p class="resume-entry">May 2023 – Present · Bangalore, IN<br>Building Galaxy AI · Context Engine · S26 Series</p>
+        </div>
+      </div>
+      <p class="resume-view-link">View Resume ↗</p>
+    </a>
+
+  </div>
+
+  </div><!-- end content-area -->
+
+</div>
+
+<script>
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+
+  if (dot && ring) {
+    let rx = 0, ry = 0;
+    let mx = 0, my = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
+    });
+
+    (function lerp() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(lerp);
+    })();
+
+    const hoverEls = document.querySelectorAll('a, button, [role="button"]');
+    hoverEls.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+  }
+
+</script>
+</body>
+</html>
